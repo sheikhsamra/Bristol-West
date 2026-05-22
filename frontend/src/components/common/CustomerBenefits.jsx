@@ -8,30 +8,30 @@ export default function CustomerBenefits() {
   const benefits = [
     {
       img: permissiveImg,
-      title: "Permissive user coverage.",
-      text: "By providing a driver permission to use your vehicle, they are covered under your vehicle’s insurance.",
+      title: "Permissive User Coverage",
+      text: "Granting someone else permission to drive your vehicle? Rest easy knowing they are protected under your policy.",
     },
     {
       img: trailerImg,
-      title: "$500 trailer physical damage coverage.",
-      text: "Liability coverage is provided for a trailer you own that is attached to a covered vehicle.",
+      title: "Trailer Physical Damage Protection",
+      text: "We provide liability support for trailers you own when attached to your primary covered vehicle.",
     },
     {
       img: rentalImg,
-      title: "Rental car coverage.",
-      text: "If you rent a car, you’ll enjoy the same coverage as your personal, Bristol West insured vehicle.",
+      title: "Seamless Rental Car Coverage",
+      text: "When you rent a car, your InsureCareCenter policy travels with you, offering the same level of care you expect at home.",
     },
     {
       img: rideshareImg,
-      title: "Rideshare coverage option.",
-      text: "Extends your personal auto policy limits and coverage if you conduct Rideshare activities, including Uber Eats.",
+      title: "Flexible Rideshare Protection",
+      text: "Designed for modern drivers. Extend your coverage limits for rideshare and delivery activities, including meal delivery services.",
     },
   ];
 
   return (
     <section className="max-w-6xl mx-auto px-4 md:px-8 py-12">
       <h2 className="text-3xl md:text-4xl font-bold text-[#00a98f] text-center mb-12">
-        As a Bristol West customer, you’ll enjoy:
+        Why Insure Care Center Customers Choose Us
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {benefits.map((item, index) => (
@@ -49,10 +49,10 @@ export default function CustomerBenefits() {
         ))}
       </div>
       <p className="text-sm text-gray-500 mt-6 text-center">
-        *Not all policies, discounts, coverages and features are available in all states.
+        *Policy features, discounts, and coverages vary by state and individual plan.
       </p>
       <p className="text-sm text-gray-500 text-center">
-        *Coverages are not available in all policies. Where available, coverages may be subject to additional terms, conditions, or limitations.
+        *Availability is subject to specific policy terms, conditions, and coverage limitations.
       </p>
     </section>
   );

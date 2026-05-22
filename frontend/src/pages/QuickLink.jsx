@@ -5,17 +5,17 @@ import { FaCreditCard, FaFileInvoice, FaIdCard } from "react-icons/fa";
 export default function QuickLinks() {
   const links = [
     {
-      title: "Make a Payment",
+      title: "Quick Payment", // "Make a Payment" se behtar aur short
       icon: <FaCreditCard className="text-white text-7xl mb-2" />,
       path: "/MakePayment",
     },
     {
-      title: "Report/View a Claim",
+      title: "Claims Support", // "Report/View a Claim" ko concise kiya
       icon: <FaFileInvoice className="text-white text-7xl mb-2" />,
       path: "/Claims",
     },
     {
-      title: "View ID",
+      title: "Digital ID Card", // "View ID" ko clear kiya
       icon: <FaIdCard className="text-white text-7xl mb-2" />,
       path: "/FindPolicy",
     },
@@ -25,20 +25,20 @@ export default function QuickLinks() {
     <section className="bg-gray-100 py-20">
       <div className="container mx-auto px-4 ">
         <h2 className="text-3xl font-bold text-[#00a98f] text-center mb-2">
-          Quick Links
+          Customer Quick Services
         </h2>
-        <p className="text-center text-[#00a98f] mb-8">No Login Required</p>
+        <p className="text-center text-[#00a98f] font-medium mb-8">No login needed for these services</p>
 
-        {/* Flex container with justify-between */}
+        {/* Flex container */}
         <div className="flex flex-col md:flex-row justify-between mt-10 gap-8 w-full max-w-5xl mx-auto">
           {links.map((link, idx) => (
             <Link
               key={idx}
               to={link.path}
-              className="bg-[#00a98f] flex flex-col items-center justify-center py-10 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 hover:bg-[#056557] flex-1"
+              className="bg-[#00a98f] flex flex-col items-center justify-center py-10 px-4 rounded-lg shadow-lg transition-transform duration-200 hover:scale-105 hover:bg-[#056557] flex-1"
             >
               {link.icon}
-              <h3 className="text-white font-bold text-2xl mb-2 hover:underline">
+              <h3 className="text-white font-bold text-xl md:text-2xl text-center mb-2 hover:underline">
                 {link.title}
               </h3>
             </Link>

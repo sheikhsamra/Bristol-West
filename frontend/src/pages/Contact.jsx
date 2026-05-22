@@ -25,10 +25,10 @@ export default function Contact() {
 
       <main className="max-w-7xl mx-auto px-4 md:px-12 py-10">
         <h1 className="text-3xl md:text-4xl font-bold text-[#0B2545] mb-10 border-b-2 border-slate-200 pb-3">
-          Contact Us
+          Contact Insure Care Center
         </h1>
 
-        {/* Directory Cards Section (As per your screenshot) */}
+        {/* Directory Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           
           {/* Card 1: Addresses */}
@@ -36,19 +36,19 @@ export default function Contact() {
             <div className="bg-slate-100 p-4 rounded-full mb-4">
               <FaMapMarkerAlt className="text-2xl text-[#0B2545]" />
             </div>
-            <h2 className="text-lg font-bold text-[#0B2545] uppercase tracking-wide mb-6">Addresses</h2>
+            <h2 className="text-lg font-bold text-[#0B2545] uppercase tracking-wide mb-6">Our Offices</h2>
             <div className="text-sm space-y-6 text-slate-600">
               <div>
-                <p className="font-bold text-slate-900">Claims</p>
-                <p>Bristol West Claims Service</p>
+                <p className="font-bold text-slate-900">Claims Department</p>
+                <p>Insure Care Center Claims Service</p>
                 <p>PO Box 258806</p>
-                <p>Oklahoma City, OK 73125-8806</p>
+                <p>Oklahoma City, OK 73125</p>
               </div>
               <div>
-                <p className="font-bold text-slate-900">General Mail</p>
-                <p>Bristol West Insurance Group</p>
+                <p className="font-bold text-slate-900">Corporate Headquarters</p>
+                <p>Insure Care Center Group</p>
                 <p>PO Box 258806</p>
-                <p>Oklahoma City, OK 73124-8834</p>
+                <p>Oklahoma City, OK 73124</p>
               </div>
             </div>
           </div>
@@ -58,19 +58,19 @@ export default function Contact() {
             <div className="bg-slate-100 p-4 rounded-full mb-4">
               <FaEnvelopeOpenText className="text-2xl text-[#0B2545]" />
             </div>
-            <h2 className="text-lg font-bold text-[#0B2545] uppercase tracking-wide mb-6">Mailing & Payment</h2>
+            <h2 className="text-lg font-bold text-[#0B2545] uppercase tracking-wide mb-6">Payments</h2>
             <div className="text-sm space-y-6 text-slate-600">
               <div>
-                <p className="font-bold text-slate-900">Customers in AZ, CA, NV, TX</p>
-                <p>Bristol West Insurance Group</p>
+                <p className="font-bold text-slate-900">West Region Payments</p>
+                <p>Insure Care Center Support</p>
                 <p>PO Box 7142</p>
-                <p>Pasadena, CA 91109-7142</p>
+                <p>Pasadena, CA 91109</p>
               </div>
               <div>
-                <p className="font-bold text-slate-900">All other states</p>
-                <p>Bristol West Insurance Group</p>
+                <p className="font-bold text-slate-900">Central & East Payments</p>
+                <p>Insure Care Center Support</p>
                 <p>PO Box 371329</p>
-                <p>Pittsburgh, PA 15250-7329</p>
+                <p>Pittsburgh, PA 15250</p>
               </div>
             </div>
           </div>
@@ -80,27 +80,24 @@ export default function Contact() {
             <div className="bg-slate-100 p-4 rounded-full mb-4">
               <FaPhoneAlt className="text-2xl text-[#0B2545]" />
             </div>
-            <h2 className="text-lg font-bold text-[#0B2545] uppercase tracking-wide mb-6">Phone/Fax</h2>
+            <h2 className="text-lg font-bold text-[#0B2545] uppercase tracking-wide mb-6">Support</h2>
             <div className="text-sm space-y-4 text-slate-600">
               <div>
-                <p className="font-bold text-slate-900">24/7 Phone Pay & Billing Line</p>
-                <p className="text-[#00a98f] font-bold text-base">1-888-888-0080</p>
+                <p className="font-bold text-slate-900">24/7 Payment Line</p>
+                <p className="text-[#00a98f] font-bold text-base">1-800-INSURE-CARE</p>
               </div>
               <div className="pt-2">
-                <p className="font-bold text-slate-900">Customer Service</p>
-                <p>Monday thru Friday</p>
-                <p>7:00AM to 7:00PM (Central Time)</p>
-                <p>Saturday</p>
-                <p>8:00AM to 3:00PM (Central Time)</p>
+                <p className="font-bold text-slate-900">Customer Support Hours</p>
+                <p>Mon - Fri: 7:00AM - 7:00PM (CT)</p>
+                <p>Sat: 8:00AM - 3:00PM (CT)</p>
               </div>
               <div className="pt-4 space-y-2">
-                <Link to="/claims" className="text-[#00a98f] hover:underline font-bold block uppercase">Claims</Link>
-                <Link to="/faq" className="text-[#00a98f] hover:underline font-bold block uppercase">Claims contact information</Link>
+                <Link to="/claims" className="text-[#00a98f] hover:underline font-bold block uppercase">View Claims Help</Link>
+                <Link to="/faq" className="text-[#00a98f] hover:underline font-bold block uppercase">Frequently Asked Questions</Link>
               </div>
             </div>
           </div>
         </div>
-
       </main>
     </div>
   );

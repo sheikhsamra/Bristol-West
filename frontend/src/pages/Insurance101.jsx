@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCarCrash, FaCarSide, FaFileInvoiceDollar } from "react-icons/fa";
-import heroAuto from "../assets/auto.jpg"; // replace with your hero image path
+import heroAuto from "../assets/auto.jpg"; 
 import CoverageSlides from "../components/common/coverageSlides";
 import CustomerBenefits from "../components/common/CustomerBenefits";
 import CommonCarInsurance from "../components/common/CommonCarInsurance";
@@ -13,7 +13,7 @@ export default function AutoInsurance101() {
       <section className="w-full h-64 md:h-96 overflow-hidden">
         <img
           src={heroAuto}
-          alt="Auto Insurance Hero"
+          alt="Auto Insurance Basics"
           className="w-full h-full object-cover rounded-b-3xl"
         />
       </section>
@@ -21,17 +21,16 @@ export default function AutoInsurance101() {
       {/* Main Heading & Intro */}
       <section className="text-center px-4 md:px-16 py-12 ">
         <h1 className="text-4xl md:text-5xl font-bold text-[#00a98f] mb-6 ">
-          Auto Insurance 101
+          Auto Insurance Made Simple
         </h1>
         <p className="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed ">
-          Bristol West® provides comprehensive auto insurance options at
-          affordable rates for a wide variety of drivers. Whether you have a
-          less-than-perfect driving record, no prior coverage, traffic
-          violations, or even a DUI, we have solutions to keep you protected and
-          make insurance simple.
+          At InsureCareCenter, we believe every driver deserves access to high-quality 
+          coverage at rates that make sense. Whether you are building your driving history, 
+          managing past violations, or just looking for a more reliable partner, 
+          we provide smart solutions tailored to your unique journey.
         </p>
         <p className="text-[#00a98f] mt-4 font-semibold">
-          You can be confident knowing Bristol West has coverage for you.
+          Your peace of mind is our priority at InsureCareCenter.
         </p>
       </section>
 
@@ -42,11 +41,11 @@ export default function AutoInsurance101() {
           <FaFileInvoiceDollar className="text-[#00a98f] text-4xl mt-1" />
           <div>
             <h2 className="text-2xl font-semibold text-[#00a98f] mb-2">
-              Liability Insurance
+              Liability Protection
             </h2>
             <p className="text-gray-700">
-              Helps cover the cost of another driver’s property and bodily injury
-              expenses if you’re found at fault in an accident.
+              Covers costs related to another driver's property damage or medical 
+              expenses if you are found legally responsible for an accident.
             </p>
           </div>
         </article>
@@ -56,11 +55,11 @@ export default function AutoInsurance101() {
           <FaCarSide className="text-[#00a98f] text-4xl mt-1" />
           <div>
             <h2 className="text-2xl font-semibold text-[#00a98f] mb-2">
-              Comprehensive Insurance
+              Comprehensive Coverage
             </h2>
             <p className="text-gray-700">
-              Provides coverage for physical damage from events beyond your
-              control, including theft, vandalism, or natural events.
+              Provides security against non-collision incidents, including theft, 
+              vandalism, fire, and weather-related damage.
             </p>
           </div>
         </article>
@@ -70,11 +69,11 @@ export default function AutoInsurance101() {
           <FaCarCrash className="text-[#00a98f] text-4xl mt-1" />
           <div>
             <h2 className="text-2xl font-semibold text-[#00a98f] mb-2">
-              Collision Insurance
+              Collision Coverage
             </h2>
             <p className="text-gray-700">
-              Helps cover damages when your vehicle collides with another car or
-              object.
+              Helps repair or replace your vehicle if it is damaged following a 
+              collision with another vehicle or a stationary object.
             </p>
           </div>
         </article>

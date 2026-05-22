@@ -3,11 +3,26 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import auto2 from "../../assets/auto2.jpg";
 
 const coverageSlides = [
-  { heading: "Bodily Injury and Property Damage", text: "This covers your legal responsibility for an accident where someone else is injured or there is damage to someone else’s property." },
-  { heading: "Rental Reimbursement", text: "If you rent a car after you have a covered loss, we will put up to $50 per day back in your pocket for up to 30 days." },
-  { heading: "Medical Payments", text: "This coverage can pay for your medical care due to a car accident (up to $10,000)." },
-  { heading: "Towing and Roadside Service", text: "If your vehicle needs towing or assistance on the road, we will take care of the cost for you." },
-  { heading: "Uninsured/Underinsured Motorists", text: "This helps protect you if someone else is responsible for an accident you’re in and the other person has no or minimal insurance." },
+  { 
+    heading: "Liability & Property Coverage", 
+    text: "Protects your financial future by covering costs if you are found legally responsible for injury or property damage to others." 
+  },
+  { 
+    heading: "Rental Reimbursement", 
+    text: "Stay on the move. We cover your rental car expenses up to $50 per day for 30 days while your vehicle is being repaired after a covered loss." 
+  },
+  { 
+    heading: "Medical Expense Protection", 
+    text: "Prioritize your health. This coverage assists with medical costs for you and your passengers following an accident (up to $10,000)." 
+  },
+  { 
+    heading: "Roadside & Towing Assistance", 
+    text: "Never feel stranded. We provide professional towing and emergency roadside assistance whenever you need it most." 
+  },
+  { 
+    heading: "Uninsured/Underinsured Motorist", 
+    text: "We have your back. This coverage provides essential protection if you are in an accident with a driver who lacks sufficient insurance." 
+  },
 ];
 
 export default function TextSliderWithHero() {
@@ -22,20 +37,19 @@ export default function TextSliderWithHero() {
       {/* Hero Image Section */}
       <div className="text-center mb-8">
         <h1 className="text-2xl md:text-4xl font-bold text-[#00a98f] mb-6">
-          More Coverage Options:
+          Premium Coverage Options
         </h1>
-        {/* Responsive Image Container */}
         <div className="w-full h-56 md:h-96 overflow-hidden rounded-xl shadow-lg">
           <img
             src={auto2}
-            alt="Coverage Hero"
+            alt="InsureCareCenter Coverage"
             className="w-full h-full object-cover"
           />
         </div>
       </div>
 
       {/* Text Carousel */}
-      <div className="relative bg-gray-50 py-10 rounded-lg overflow-hidden">
+      <div className="relative bg-gray-50 py-10 rounded-lg overflow-hidden border border-gray-100">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${current * 100}%)` }}
@@ -49,10 +63,10 @@ export default function TextSliderWithHero() {
         </div>
 
         {/* Navigation Arrows */}
-        <button onClick={prevSlide} className="absolute top-1/2 left-2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
+        <button onClick={prevSlide} className="absolute top-1/2 left-2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10 transition">
           <FaChevronLeft className="text-[#00a98f]" />
         </button>
-        <button onClick={nextSlide} className="absolute top-1/2 right-2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
+        <button onClick={nextSlide} className="absolute top-1/2 right-2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10 transition">
           <FaChevronRight className="text-[#00a98f]" />
         </button>
 

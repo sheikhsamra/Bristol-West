@@ -30,9 +30,9 @@ export default function TermsOfUse() {
           <h1 className="text-3xl md:text-4xl font-bold text-[#0B2545] mb-2">
             Terms of Use
           </h1>
-          <p className="text-xs md:text-sm text-slate-400 italic">
-            Last Updated: May 2022
-          </p>
+          {/* <p className="text-xs md:text-sm text-slate-400 italic">
+            Last Updated: May 2026
+          </p> */}
         </div>
 
         {/* 2-Column Desktop Architecture */}
@@ -66,12 +66,12 @@ export default function TermsOfUse() {
               </li>
               <li>
                 <button onClick={() => scrollToSection("registration")} className="hover:text-[#00a98f] hover:underline text-left block w-full">
-                  5. Account Security & Passwords
+                  5. Account Security
                 </button>
               </li>
               <li>
                 <button onClick={() => scrollToSection("paperless")} className="hover:text-[#00a98f] hover:underline text-left block w-full">
-                  6. Paperless Terms & Conditions
+                  6. Paperless Terms
                 </button>
               </li>
               <li>
@@ -82,7 +82,7 @@ export default function TermsOfUse() {
             </ul>
 
             <div className="pt-2 border-t border-slate-100 text-[11px] text-slate-400 leading-normal">
-              Please read these terms carefully before accessing BristolWest.com or the Mobile Application.
+              Please read these terms carefully before accessing InsureCareCenter.com or our mobile application.
             </div>
           </div>
 
@@ -90,107 +90,43 @@ export default function TermsOfUse() {
           <div className="flex-1 bg-white border border-slate-200 rounded-xl p-6 md:p-10 shadow-sm space-y-8 text-sm md:text-base leading-relaxed text-slate-600">
             
             <p className="font-medium text-slate-900 bg-slate-50 p-4 rounded-md border-l-4 border-[#00a98f] text-sm">
-              By installing and using the Mobile App, or by accessing the Web Site, you accept and agree to follow these legally binding Terms. If you do not agree, please uninstall the Mobile App and discontinue site usage immediately.
+              By installing and using the InsureCareCenter App, or by accessing our website, you accept and agree to follow these legally binding Terms. If you do not agree, please discontinue use immediately.
             </p>
 
-            {/* Scope Section */}
+            {/* Sections Content */}
             <section id="scope" className="scroll-mt-24 space-y-3">
-              <h2 className="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2 border-b pb-1">
-                <span className="text-[#00a98f] text-sm">01</span> Scope of Use
-              </h2>
-              <p>
-                We invite you to view, use, copy and download materials at the Sites for your informational, non-commercial use, provided that you leave all the copyright notices intact. 
-              </p>
-              <p className="text-xs bg-slate-50 p-3 rounded text-slate-500 font-mono">
-                Prohibited actions include: reverse engineering, deploying automated scrapers/bots, uploading malicious runtime bugs, reselling data packets, or performing actions in complete contradiction of regional administrative legal frameworks.
-              </p>
+              <h2 className="text-lg md:text-xl font-bold text-slate-900 border-b pb-1">01. Scope of Use</h2>
+              <p>We invite you to use the InsureCareCenter digital platforms for your informational and account management needs. You agree to use these tools only for lawful, non-commercial purposes.</p>
             </section>
 
-            {/* Eligibility Section */}
             <section id="eligibility" className="scroll-mt-24 space-y-3">
-              <h2 className="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2 border-b pb-1">
-                <span className="text-[#00a98f] text-sm">02</span> Eligibility & Professional Advice
-              </h2>
-              <p>
-                Not all products or services highlighted are globally accessible across all United States regions. We reserve the exclusive right to evaluate individual policyholder qualifications at our absolute discretion.
-              </p>
-              <p>
-                Furthermore, the general information index offered on our portals should never be substituted for official legal, accounting, tax, or professional asset assessment recommendations.
-              </p>
+              <h2 className="text-lg md:text-xl font-bold text-slate-900 border-b pb-1">02. Product Eligibility</h2>
+              <p>Product availability varies by region. InsureCareCenter reserves the right to evaluate individual policyholder qualifications at our absolute discretion based on underwriting guidelines.</p>
             </section>
 
-            {/* Warranties Section */}
             <section id="warranties" className="scroll-mt-24 space-y-3">
-              <h2 className="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2 border-b pb-1">
-                <span className="text-[#00a98f] text-sm">03</span> Warranty Disclaimers
-              </h2>
-              <p className="uppercase text-xs font-bold tracking-wide bg-amber-50 text-amber-900 p-3 rounded border border-amber-200">
-                The sites and all underlying calculator frameworks are provided on an "AS IS" and "AS AVAILABLE" framework without warranties of any comprehensive variation, either implicit or explicitly detailed.
-              </p>
+              <h2 className="text-lg md:text-xl font-bold text-slate-900 border-b pb-1">03. Warranty Disclaimers</h2>
+              <p className="bg-amber-50 p-3 rounded border border-amber-200 text-amber-900">Our digital services and calculators are provided "AS IS" and "AS AVAILABLE" without warranties of any kind.</p>
             </section>
 
-            {/* Liability Section */}
             <section id="liability" className="scroll-mt-24 space-y-3">
-              <h2 className="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2 border-b pb-1">
-                <span className="text-[#00a98f] text-sm">04</span> Limitation of Liability
-              </h2>
-              <p>
-                Under no legal conditions (including direct breach of contract, tortuous actions, or corporate negligence) shall we be held accountable for peripheral damages, functional outages, transactional transmission delays, or sudden grid downfalls resulting from technical interactions.
-              </p>
+              <h2 className="text-lg md:text-xl font-bold text-slate-900 border-b pb-1">04. Limitation of Liability</h2>
+              <p>InsureCareCenter shall not be held accountable for peripheral damages, service outages, or technical delays resulting from your interaction with our digital interfaces.</p>
             </section>
 
-            {/* Account Registration */}
             <section id="registration" className="scroll-mt-24 space-y-3">
-              <h2 className="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2 border-b pb-1">
-                <span className="text-[#00a98f] text-sm">05</span> Account Security & Registration
-              </h2>
-              <p>
-                Authorized users must strictly preserve password confidentiality. Sharing credentials across unauthorized third-party channels is systematically barred. Account holders assume complete liability for all systematic actions and transactional requests initiated via their unique credentials.
-              </p>
+              <h2 className="text-lg md:text-xl font-bold text-slate-900 border-b pb-1">05. Account Security</h2>
+              <p>You are responsible for maintaining the confidentiality of your login credentials. You assume full liability for all actions performed through your InsureCareCenter account.</p>
             </section>
 
-            {/* Paperless Section */}
             <section id="paperless" className="scroll-mt-24 space-y-4">
-              <h2 className="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2 border-b pb-1">
-                <span className="text-[#00a98f] text-sm">06</span> Paperless Terms & Conditions
-              </h2>
-              <p>
-                Enrolling in electronic document transfers is voluntary. By consenting, you acknowledge that electronic distributions (invoices, renewal alerts, claims packets) comply with complete legal communication mandates.
-              </p>
-              
-              {/* Technical Requirement Box */}
-              <div className="bg-slate-100 p-4 rounded-lg border border-slate-200">
-                <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2 flex items-center gap-1">
-                  <FaShieldAlt className="text-[#00a98f]" /> System Compatibility Matrix
-                </h4>
-                <div className="grid grid-cols-2 gap-4 text-xs">
-                  <div>
-                    <span className="font-semibold block text-slate-700">OS Systems:</span>
-                    Windows 10+, macOS Catalina or greater equivalents.
-                  </div>
-                  <div>
-                    <span className="font-semibold block text-slate-700">Browsers:</span>
-                    Firefox 86+, Safari 14+, Chrome 89+, Edge 88+.
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-xs text-slate-500 italic">
-                State Specific Disclosures: Legal cancellation or nonrenewal declarations will be dispatched electronically to users registered inside the state perimeters of Georgia, New York, and Tennessee.
-              </p>
+              <h2 className="text-lg md:text-xl font-bold text-slate-900 border-b pb-1">06. Paperless Terms</h2>
+              <p>By opting for paperless delivery, you consent to receive electronic versions of policy documents, bills, and notices. This satisfies all legal requirements for document distribution.</p>
             </section>
 
-            {/* Mobile App Section */}
             <section id="mobile" className="scroll-mt-24 space-y-3">
-              <h2 className="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2 border-b pb-1">
-                <span className="text-[#00a98f] text-sm">07</span> Mobile App & Biometric Scanner Provisions
-              </h2>
-              <p>
-                Mobile connections remain subject to baseline carrier metrics. By enabling Touch ID, Face ID, or fingerprint authentication layouts, you grant programmatic permissions to individuals carrying saved profiles on your target mobile device to gain entryway into your files.
-              </p>
-              <p>
-                All background geolocation and Bluetooth trackers run exclusively to personalize route guidance matrices and localize automated claims evaluation centers.
-              </p>
+              <h2 className="text-lg md:text-xl font-bold text-slate-900 border-b pb-1">07. Mobile App Regulations</h2>
+              <p>By enabling biometric features (Face ID/Fingerprint) on the InsureCareCenter app, you authorize anyone with access to your device to potentially view your policy information. Please manage your device security accordingly.</p>
             </section>
 
           </div>

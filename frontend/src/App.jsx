@@ -11,8 +11,6 @@ import Insurance101 from "./pages/Insurance101";
 import Claims from "./pages/Claims";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
 import MakePayment from "./pages/MakePayment";
 import FindPolicy from "./pages/FindPolicy";
 import CustomerBenefits from "./components/common/CustomerBenefits";
@@ -35,8 +33,6 @@ function App() {
           <Route path="/why-us" element={<WhyUs />} />
           <Route path="/insurance-101" element={<Insurance101 />} />
           <Route path="/claims" element={<Claims />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/MakePayment" element={<MakePayment />} />
           <Route path="/FindPolicy" element={<FindPolicy />} />
           <Route path="/CustomerBenefits" element={<CustomerBenefits />} />
