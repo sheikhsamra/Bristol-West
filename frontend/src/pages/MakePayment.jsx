@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+import logo from "../assets/logo.png";
 
 export default function MakePayment() {
   const [formData, setFormData] = useState({
@@ -55,86 +56,89 @@ export default function MakePayment() {
         <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100">
           
           {/* Left Column: Form */}
-          <div className="flex-1 p-8 md:p-12">
-            <h1 className="text-2xl font-bold text-[#0B2545] mb-2">Secure Payment Portal</h1>
-            <p className="text-sm text-slate-500 mb-8">
-              Complete the form below to process your one-time payment for InsureCareCenter.
+          <div className="flex-1 p-8 md:p-12 border-r border-slate-100">
+            <h1 className="text-3xl font-bold text-[#00a98f] mb-2">Secure Payment Portal</h1>
+            <p className="text-sm text-slate-500 mb-8 max-w-md">
+              Complete the form below to process your secure one-time payment for InsureCareCenter.
             </p>
 
-            <form className="space-y-5" onSubmit={handleSubmit}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Full Name*</label>
+                <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Full Name*</label>
                 <input
                   type="text"
                   name="fullName"
                   placeholder="John Doe"
                   value={formData.fullName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-[#00a98f] focus:ring-1 focus:ring-[#00a98f] transition"
+                  className="w-full px-5 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-[#00a98f] transition"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Email Address*</label>
+                <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Email Address*</label>
                 <input
                   type="email"
                   name="email"
                   placeholder="name@example.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-[#00a98f] focus:ring-1 focus:ring-[#00a98f] transition"
+                  className="w-full px-5 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-[#00a98f] transition"
                   required
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Policy Number*</label>
+                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Policy Number*</label>
                   <input
                     type="text"
                     name="policyNumber"
                     placeholder="PO-12345"
                     value={formData.policyNumber}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-[#00a98f] focus:ring-1 focus:ring-[#00a98f] transition"
+                    className="w-full px-5 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-[#00a98f] transition"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">ZIP Code*</label>
+                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">ZIP Code*</label>
                   <input
                     type="text"
                     name="zipCode"
                     placeholder="12345"
                     value={formData.zipCode}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-[#00a98f] focus:ring-1 focus:ring-[#00a98f] transition"
+                    className="w-full px-5 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-[#00a98f] transition"
                     required
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Amount ($)*</label>
-                  <input
-                    type="number"
-                    name="amount"
-                    placeholder="0.00"
-                    value={formData.amount}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-[#00a98f] focus:ring-1 focus:ring-[#00a98f] transition"
-                    required
-                  />
+                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Amount ($)*</label>
+                  <div className="relative">
+                    <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0.00"
+                      value={formData.amount}
+                      onChange={handleChange}
+                      className="w-full pl-12 pr-5 py-3 border-2 border-slate-200 rounded-xl focus:outline-none focus:border-[#00a98f] transition"
+                      required
+                    />
+                  </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Payment Method</label>
+                  <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Payment Method</label>
                   <select
                     name="paymentMethod"
                     value={formData.paymentMethod}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-[#00a98f] transition"
+                    className="w-full px-5 py-3 border-2 border-slate-200 rounded-xl bg-white focus:outline-none focus:border-[#00a98f] transition appearance-none"
                   >
                     <option value="Credit Card">Credit Card</option>
                     <option value="Bank Transfer">Bank Transfer</option>
@@ -145,7 +149,7 @@ export default function MakePayment() {
 
               <button
                 type="submit"
-                className="w-full py-4 bg-[#00a98f] hover:bg-[#008f79] text-white font-bold rounded-lg transition duration-200 mt-4 shadow-md"
+                className="w-full py-4 bg-[#00a98f] hover:bg-[#00917a] text-white font-bold rounded-xl transition duration-200 mt-6 shadow-lg shadow-[#00a98f]/30"
               >
                 Submit Payment Details
               </button>
@@ -153,9 +157,10 @@ export default function MakePayment() {
           </div>
           
           {/* Right Column: Decorative/Info */}
-          <div className="hidden md:flex flex-1 bg-[#0B2545] text-white p-12 flex-col justify-center items-center text-center">
-            <h3 className="text-3xl font-bold mb-4">InsureCareCenter</h3>
-            <p className="text-blue-200">Secure, fast, and reliable insurance payments at your fingertips.</p>
+          <div className="hidden md:flex flex-1 bg-[#f9fdfc] p-12 flex-col justify-center items-center text-center">
+            <img src={logo} alt="InsureCareCenter Logo" className="w-48 mb-8" />
+            <h3 className="text-4xl font-extrabold text-[#00a98f] mb-4">InsureCareCenter</h3>
+            <p className="text-slate-600 max-w-xs leading-relaxed">Secure, fast, and reliable insurance payments at your fingertips.</p>
           </div>
         </div>
       </main>

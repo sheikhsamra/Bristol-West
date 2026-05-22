@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 export default function AboutUs() {
   return (
-    <div className="flex-1 bg-slate-50 font-sans text-slate-700">
+    <div className="flex-1 bg-slate-50 font-sans text-gray-700">
       
       {/* Breadcrumb Navigation */}
       <div className="bg-slate-200/60 border-b border-slate-300/50 py-3 px-4 md:px-12">
-        <div className="max-w-7xl mx-auto text-xs md:text-sm text-slate-600 flex items-center gap-2">
+        <div className="max-w-7xl mx-auto text-xs md:text-sm text-[#00a98f] flex items-center gap-2">
           <Link to="/" className="text-[#00a98f] hover:underline">Home</Link>
           <span>/</span>
           <span className="text-slate-500 font-medium">About InsureCareCenter</span>
@@ -20,13 +20,13 @@ export default function AboutUs() {
           
           {/* Left Column: Core Narrative Content */}
           <div className="flex-[2] space-y-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-[#0B2545] border-b-2 border-slate-200 pb-3">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#00a98f] border-b-2 border-slate-200 pb-3">
               About InsureCareCenter
             </h1>
 
             {/* Section 1: History */}
             <section className="space-y-3">
-              <h2 className="text-xl font-bold text-slate-900">
+              <h2 className="text-xl font-bold text-[#00a98f]">
                 Our Commitment to Drivers
               </h2>
               <p className="text-sm md:text-base leading-relaxed text-slate-600">
@@ -45,7 +45,7 @@ export default function AboutUs() {
 
             {/* Section 2: Group Member Alliance */}
             <section className="space-y-3">
-              <h2 className="text-xl font-bold text-slate-900">
+              <h2 className="text-xl font-bold text-[#00a98f]">
                 A Partner You Can Trust
               </h2>
               <p className="text-sm md:text-base leading-relaxed text-slate-600">
@@ -59,7 +59,7 @@ export default function AboutUs() {
 
             {/* Section 3: Vision statement */}
             <section className="space-y-3">
-              <h2 className="text-xl font-bold text-slate-900">
+              <h2 className="text-xl font-bold text-[#00a98f]">
                 Client-First Philosophy
               </h2>
               <p className="text-sm md:text-base leading-relaxed text-slate-600">

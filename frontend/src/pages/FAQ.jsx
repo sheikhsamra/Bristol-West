@@ -12,7 +12,7 @@ export default function FAQ() {
   const faqData = [
     {
       category: "Account Management",
-      icon: <FaUserCog className="text-[#00a98f] text-lg" />,
+      icon: <FaUserCog className="text-[#00a98f] text-xl" />,
       questions: [
         {
           q: "Why sign up for an InsureCareCenter account?",
@@ -22,7 +22,7 @@ export default function FAQ() {
     },
     {
       category: "Payments & Billing",
-      icon: <FaDollarSign className="text-[#00a98f] text-lg" />,
+      icon: <FaDollarSign className="text-[#00a98f] text-xl" />,
       questions: [
         {
           q: "What are the ways to make a payment?",
@@ -40,7 +40,7 @@ export default function FAQ() {
     },
     {
       category: "Direct Debit Program",
-      icon: <FaExchangeAlt className="text-[#00a98f] text-lg" />,
+      icon: <FaExchangeAlt className="text-[#00a98f] text-xl" />,
       questions: [
         {
           q: "What are the benefits of the Direct Debit Program?",
@@ -54,7 +54,7 @@ export default function FAQ() {
     },
     {
       category: "Text Alerts",
-      icon: <FaSms className="text-[#00a98f] text-lg" />,
+      icon: <FaSms className="text-[#00a98f] text-xl" />,
       questions: [
         {
           q: "Is there a charge for the text alert program?",
@@ -69,53 +69,53 @@ export default function FAQ() {
   return (
     <div className="flex-1 bg-slate-50 font-sans text-slate-700">
       
-      <div className="bg-slate-200/60 border-b border-slate-300/50 py-3 px-4 md:px-12 text-xs md:text-sm">
-        <div className="max-w-7xl mx-auto flex items-center gap-2">
-          <Link to="/" className="text-[#00a98f] hover:underline">Home</Link>
-          <span>/</span>
-          <span className="text-slate-500 font-medium">FAQ</span>
+      {/* Breadcrumb */}
+      <div className="bg-white border-b border-slate-100 py-3 px-4 md:px-12 text-sm">
+        <div className="max-w-4xl mx-auto flex items-center gap-2">
+          <Link to="/" className="text-[#00a98f] hover:underline font-medium">Home</Link>
+          <span className="text-slate-300">/</span>
+          <span className="text-[#0B2545] font-bold">Frequently Asked Questions</span>
         </div>
       </div>
 
-      <main className="max-w-4xl mx-auto px-4 py-10 md:py-14">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#0B2545] mb-3">
+      <main className="max-w-4xl mx-auto px-4 py-16">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-extrabold text-[#00a98f] mb-4">
             Frequently Asked Questions
           </h1>
-          <p className="text-slate-500 max-w-xl mx-auto text-sm md:text-base">
+          <p className="text-slate-600 max-w-xl mx-auto">
             Get quick answers about your InsureCareCenter account, payments, and policy management.
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-12">
           {faqData.map((group, groupIdx) => (
-            <div key={groupIdx} className="space-y-3">
-              <div className="flex items-center gap-2 px-1 py-2 text-slate-900 font-bold text-lg border-b border-slate-200">
+            <div key={groupIdx} className="space-y-6">
+              <div className="flex items-center gap-3 text-[#0B2545] font-bold text-xl border-b border-slate-200 pb-4">
                 {group.icon}
                 <h2>{group.category}</h2>
               </div>
 
-              <div className="space-y-2.5">
+              <div className="space-y-4">
                 {group.questions.map((item, qIdx) => {
-                  const currentIndex = globalIndex;
-                  globalIndex++;
+                  const currentIndex = globalIndex++;
                   const isOpen = openFaq === currentIndex;
 
                   return (
-                    <div key={qIdx} className="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm transition-all">
+                    <div key={qIdx} className="bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
                       <button
                         onClick={() => toggleFaq(currentIndex)}
-                        className="w-full px-5 py-4 flex justify-between items-center text-left font-semibold text-slate-800 hover:bg-slate-50 transition text-sm md:text-base"
+                        className="w-full px-6 py-5 flex justify-between items-center text-left font-bold text-[#0B2545] hover:bg-[#00a98f]/5 transition"
                       >
-                        <span className="flex items-start gap-3">
-                          <FaRegQuestionCircle className="text-slate-400 mt-1 flex-shrink-0" />
+                        <span className="flex items-center gap-3">
+                          <FaRegQuestionCircle className="text-[#00a98f]" />
                           {item.q}
                         </span>
-                        {isOpen ? <FaChevronUp className="text-[#00a98f] flex-shrink-0 ml-4" /> : <FaChevronDown className="text-slate-400 flex-shrink-0 ml-4" />}
+                        {isOpen ? <FaChevronUp className="text-[#00a98f]" /> : <FaChevronDown className="text-slate-400" />}
                       </button>
                       
-                      <div className={`transition-all duration-300 overflow-hidden ${isOpen ? "max-h-96 border-t border-slate-100" : "max-h-0"}`}>
-                        <div className="p-5 text-sm md:text-base bg-slate-50/40 text-slate-600 leading-relaxed">
+                      <div className={`transition-all duration-300 overflow-hidden ${isOpen ? "max-h-96 border-t border-slate-50" : "max-h-0"}`}>
+                        <div className="p-6 text-slate-600 bg-slate-50/50 leading-relaxed">
                           {item.a}
                         </div>
                       </div>
@@ -127,10 +127,11 @@ export default function FAQ() {
           ))}
         </div>
 
-        <div className="mt-14 p-6 bg-emerald-50 rounded-xl border border-emerald-100 text-center max-w-2xl mx-auto shadow-sm">
-          <h3 className="font-bold text-emerald-950 mb-1 text-base">Still have questions?</h3>
-          <p className="text-xs text-emerald-800 mb-4">Our support team is here to help with your insurance needs.</p>
-          <Link to="/contact" className="inline-block text-xs font-bold text-white bg-[#00a98f] hover:bg-[#008f79] px-6 py-2.5 rounded-full transition">
+        {/* Support Box */}
+        <div className="mt-20 p-8 bg-[#00a98f] rounded-2xl text-center shadow-lg">
+          <h3 className="font-bold text-white mb-2 text-lg">Still have questions?</h3>
+          <p className="text-white mb-6 text-sm">Our support team is here to help with your insurance needs.</p>
+          <Link to="/contact" className="inline-block font-bold text-[#00a98f] bg-white hover:bg-[#00a98f] hover:text-white px-8 py-3 rounded-xl transition">
             Contact Customer Care
           </Link>
         </div>
