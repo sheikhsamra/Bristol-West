@@ -19,12 +19,12 @@
       "dest": "backend/server.js"
     },
     {
-      "handle": "filesystem"
+      "src": "/",
+      "dest": "backend/server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "frontend/$1",
-      "priority": 0
+      "dest": "frontend/$1"
     }
   ]
 }
