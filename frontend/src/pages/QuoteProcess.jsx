@@ -69,7 +69,7 @@ export default function QuoteProcess() {
       }
       setLoading(true);
       try {
-        const API_URL = 'http://localhost:5000';
+        const API_URL = import.meta.env.VITE_API_URL;
         await axios.post(`${API_URL}/api/quotes`, {
           userId: user?.id,
           zipCode,

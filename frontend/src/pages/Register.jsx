@@ -23,7 +23,7 @@ export default function Register() {
     }
     setLoading(true);
     try {
-      const API_URL = 'http://localhost:5000';
+      const API_URL = import.meta.env.VITE_API_URL;
       await axios.post(`${API_URL}/api/auth/register`, {
         fullName: formData.fullName,
         email: formData.email,
