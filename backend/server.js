@@ -11,6 +11,11 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Root Route for health check
+app.get('/', (req, res) => {
+    res.send('InsureCareCenter Backend is running successfully!');
+});
+
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI, {
     dbName: 'Insurancewebsite' // Force the database name
@@ -179,6 +184,10 @@ app.get('/api/admin/quotes', isAdmin, async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
+
+module.exports = app;
