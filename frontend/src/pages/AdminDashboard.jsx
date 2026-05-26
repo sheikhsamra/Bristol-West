@@ -27,12 +27,13 @@ export default function AdminDashboard() {
 
     const fetchData = async () => {
       try {
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
         const config = {
           headers: { 'x-user-role': user.role }
         };
         const [usersRes, quotesRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/admin/users", config),
-          axios.get("http://localhost:5000/api/admin/quotes", config)
+          axios.get(`${API_URL}/api/admin/users`, config),
+          axios.get(`${API_URL}/api/admin/quotes`, config)
         ]);
         setUsers(usersRes.data);
         setQuotes(quotesRes.data);
