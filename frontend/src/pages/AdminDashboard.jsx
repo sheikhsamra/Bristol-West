@@ -27,7 +27,7 @@ export default function AdminDashboard() {
 
     const fetchData = async () => {
       try {
-        const API_URL = 'https://bristol-west-backend.vercel.app';
+        const API_URL = 'http://localhost:5000';
         const config = {
           headers: { 'x-user-role': user.role }
         };

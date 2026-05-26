@@ -23,7 +23,7 @@ export default function Register() {
     }
     setLoading(true);
     try {
-      const API_URL = 'https://bristol-west-backend.vercel.app';
+      const API_URL = 'http://localhost:5000';
       await axios.post(`${API_URL}/api/auth/register`, {
         fullName: formData.fullName,
         email: formData.email,

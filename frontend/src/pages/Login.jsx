@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const API_URL = 'https://bristol-west-backend.vercel.app';
+      const API_URL = 'http://localhost:5000';
       const response = await axios.post(`${API_URL}/api/auth/login`, { email, password });
       const user = response.data.user;
       localStorage.setItem('user', JSON.stringify(user));
