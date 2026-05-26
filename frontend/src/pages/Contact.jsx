@@ -31,14 +31,13 @@ export default function Contact() {
             <h2 className="text-lg font-bold text-[#0B2545] uppercase tracking-wide mb-6">Our Offices</h2>
             <div className="text-sm space-y-6 text-slate-600">
               <div>
-                <p className="font-bold text-[#0B2545]">Claims Department</p>
-                <p>InsureCareCenter Claims Service</p>
-                <p>PO Box 258806, Oklahoma City, OK 73125</p>
+                <p className="font-bold text-[#0B2545]">Main Office</p>
+                <p>660 Price Ave UNIT A,</p>
+                <p>Redwood City, CA 94063</p>
               </div>
               <div>
-                <p className="font-bold text-[#0B2545]">Corporate Headquarters</p>
-                <p>InsureCareCenter Group</p>
-                <p>PO Box 258806, Oklahoma City, OK 73124</p>
+                <p className="font-bold text-[#0B2545]">Claims Mailing Address</p>
+                <p>PO Box 258806, Oklahoma City, OK 73125</p>
               </div>
             </div>
           </div>
@@ -52,12 +51,10 @@ export default function Contact() {
             <div className="text-sm space-y-6 text-slate-600">
               <div>
                 <p className="font-bold text-[#0B2545]">West Region Payments</p>
-                <p>InsureCareCenter Support</p>
                 <p>PO Box 7142, Pasadena, CA 91109</p>
               </div>
               <div>
                 <p className="font-bold text-[#0B2545]">Central & East Payments</p>
-                <p>InsureCareCenter Support</p>
                 <p>PO Box 371329, Pittsburgh, PA 15250</p>
               </div>
             </div>
@@ -71,13 +68,13 @@ export default function Contact() {
             <h2 className="text-lg font-bold text-[#0B2545] uppercase tracking-wide mb-6">Support</h2>
             <div className="text-sm space-y-4 text-slate-600">
               <div>
-                <p className="font-bold text-[#0B2545]">24/7 Payment Line</p>
-                <p className="text-[#ff5100] font-bold text-base">1-800-INSURE-CARE</p>
+                <p className="font-bold text-[#0B2545]">Direct Support Line</p>
+                <p className="text-[#ff5100] font-bold text-lg">(650) 731-2098</p>
               </div>
               <div className="pt-2">
-                <p className="font-bold text-[#0B2545]">Support Hours (CT)</p>
-                <p>Mon - Fri: 7:00AM - 7:00PM</p>
-                <p>Sat: 8:00AM - 3:00PM</p>
+                <p className="font-bold text-[#0B2545]">Support Hours (PT)</p>
+                <p>Mon - Fri: 8:00AM - 6:00PM</p>
+                <p>Sat: 9:00AM - 2:00PM</p>
               </div>
               <div className="pt-4 space-y-3">
                 <Link to="/claims" className="text-[#00a98f] hover:underline font-bold block uppercase tracking-tight">Claims Help &rarr;</Link>

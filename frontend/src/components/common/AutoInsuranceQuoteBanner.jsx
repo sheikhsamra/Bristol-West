@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AutoInsuranceQuoteBanner() {
+  const [zipCode, setZipCode] = useState("");
+  const navigate = useNavigate();
+
+  const handleStartQuote = () => {
+    if (/^\d{5}$/.test(zipCode)) {
+      navigate(`/?zip=${zipCode}`);
+    } else {
+      alert("Please enter a valid 5-digit USA Zip Code");
+    }
+  };
+
   return (
     <section className="bg-[#00a98f] text-white py-16 px-4 w-full">
       <div className="max-w-5xl mx-auto text-center">
@@ -16,9 +28,15 @@ export default function AutoInsuranceQuoteBanner() {
           <input
             type="text"
             placeholder="Enter your Zip Code"
+            maxLength="5"
+            value={zipCode}
+            onChange={(e) => setZipCode(e.target.value.replace(/\D/g, ""))}
             className="px-5 py-4 rounded-lg border-none text-gray-800 w-full sm:w-72 focus:outline-none focus:ring-4 focus:ring-white/30 text-lg shadow-sm"
           />
-          <button className="w-full sm:w-auto px-10 py-4 bg-[#0B2545] hover:bg-[#081a32] rounded-lg font-bold text-white transition-all duration-200 text-lg shadow-lg">
+          <button 
+            onClick={handleStartQuote}
+            className="w-full sm:w-auto px-10 py-4 bg-[#0B2545] hover:bg-[#081a32] rounded-lg font-bold text-white transition-all duration-200 text-lg shadow-lg"
+          >
             Start Quote
           </button>
         </div>

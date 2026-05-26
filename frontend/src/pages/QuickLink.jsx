@@ -5,19 +5,19 @@ import { FaCreditCard, FaFileInvoice, FaIdCard } from "react-icons/fa";
 export default function QuickLinks() {
   const links = [
     {
-      title: "Quick Payment", // "Make a Payment" se behtar aur short
+      title: "Quick Payment",
       icon: <FaCreditCard className="text-white text-7xl mb-2" />,
       path: "/MakePayment",
     },
     {
-      title: "Claims Support", // "Report/View a Claim" ko concise kiya
+      title: "Claims Support",
       icon: <FaFileInvoice className="text-white text-7xl mb-2" />,
       path: "/Claims",
     },
     {
-      title: "Digital ID Card", // "View ID" ko clear kiya
+      title: "Digital ID Card",
       icon: <FaIdCard className="text-white text-7xl mb-2" />,
-      path: "/FindPolicy",
+      path: "/quote-process", // Redirect to the flow starting with Zip if needed
     },
   ];
 

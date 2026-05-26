@@ -19,6 +19,10 @@ import AutoInsuranceQuoteBanner from "./components/common/AutoInsuranceQuoteBann
 import ScrollToTop from "./components/common/ScrollToTop";
 import AboutUs from "./pages/AboutUs";
 import TermsConditions from "./pages/TermsConditions";
+import QuoteProcess from "./pages/QuoteProcess";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -30,6 +34,10 @@ function App() {
       
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/quote-process" element={<QuoteProcess />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/why-us" element={<WhyUs />} />
           <Route path="/insurance-101" element={<Insurance101 />} />
           <Route path="/claims" element={<Claims />} />

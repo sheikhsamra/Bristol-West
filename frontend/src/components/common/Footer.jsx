@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import play from "../../assets/googleplay.png";
 import app from "../../assets/appstore.png";
 import logo2 from "../../assets/farmers.png";
-import logo from "../../assets/logo2.png"; // Note: Agar aapne logo update kiya hai, toh file name change kar lein
+import logo from "../../assets/logo2.png"; 
 
 export default function Footer() {
   const topLinks = [
@@ -11,6 +12,19 @@ export default function Footer() {
     { name: "Contact Support", path: "/Contact" },
     { name: "Terms & Conditions", path: "/TermConditions" },
     { name: "Help Center (FAQ)", path: "/FAQ" },
+  ];
+
+  const socialLinks = [
+    { 
+      icon: <FaFacebookF size={20} />, 
+      url: "https://www.facebook.com/", 
+      label: "Facebook" 
+    },
+    { 
+      icon: <FaInstagram size={22} />, 
+      url: "https://www.instagram.com/", 
+      label: "Instagram" 
+    },
   ];
 
   return (
@@ -41,14 +55,35 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* App Store / Google Play */}
-        <div className="flex justify-center items-center gap-4 mb-6">
-          <a href="#" className="hover:opacity-90 transition">
-            <img src={play} alt="Download on App Store" className="h-10" />
-          </a>
-          <a href="#" className="hover:opacity-90 transition">
-            <img src={app} alt="Get it on Google Play" className="h-20" />
-          </a>
+        {/* Social Media and Apps */}
+        <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-8">
+          {/* Social Icons */}
+          <div className="flex items-center gap-6">
+            {socialLinks.map((social, idx) => (
+              <a 
+                key={idx} 
+                href={social.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-white/10 hover:bg-white text-white hover:text-[#00a98f] p-3 rounded-full transition-all duration-300 shadow-sm"
+                aria-label={social.label}
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+
+          <div className="hidden md:block h-8 w-px bg-white/20"></div>
+
+          {/* App Store / Google Play */}
+          <div className="flex justify-center items-center gap-4">
+            <a href="#" className="hover:opacity-90 transition">
+              <img src={play} alt="Download on App Store" className="h-10" />
+            </a>
+            <a href="#" className="hover:opacity-90 transition">
+              <img src={app} alt="Get it on Google Play" className="h-20" />
+            </a>
+          </div>
         </div>
 
         {/* Bottom Text */}
