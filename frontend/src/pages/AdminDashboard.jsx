@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Users, FileText, Calendar, MapPin, Phone, Mail } from "lucide-react";
 
 export default function AdminDashboard() {
@@ -8,7 +8,8 @@ export default function AdminDashboard() {
   const [quotes, setQuotes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("quotes"); // "users" or "quotes"
+  const [activeTab, setActiveTab] = useState("quotes");
+  const [selectedQuote, setSelectedQuote] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,9 +28,7 @@ export default function AdminDashboard() {
     const fetchData = async () => {
       try {
         const API_URL = 'http://localhost:5000';
-        const config = {
-          headers: { 'x-user-role': user.role }
-        };
+        const config = { headers: { 'x-user-role': user.role } };
         const [usersRes, quotesRes] = await Promise.all([
           axios.get(`${API_URL}/api/admin/users`, config),
           axios.get(`${API_URL}/api/admin/quotes`, config)
@@ -43,7 +42,7 @@ export default function AdminDashboard() {
       }
     };
     fetchData();
-  }, []);
+  }, [navigate]);
 
   const handleStatusChange = async (id, newStatus) => {
     try {
@@ -52,7 +51,6 @@ export default function AdminDashboard() {
       const config = { headers: { 'x-user-role': storedUser.role } };
       await axios.put(`${API_URL}/api/admin/quotes/${id}`, { status: newStatus }, config);
       
-      // Update local state
       setQuotes(quotes.map(q => q._id === id ? { ...q, referralStatus: newStatus } : q));
     } catch (error) {
       console.error("Error updating status:", error);
@@ -61,14 +59,14 @@ export default function AdminDashboard() {
   };
 
   const filteredQuotes = quotes.filter(q => 
-    q.firstName.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    q.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    q.email.toLowerCase().includes(searchTerm.toLowerCase())
+    q.firstName?.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    q.lastName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    q.email?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const filteredUsers = users.filter(u => 
-    u.fullName.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    u.email.toLowerCase().includes(searchTerm.toLowerCase())
+    u.fullName?.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    u.email?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (loading) {
@@ -81,6 +79,27 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 md:px-8 pt-24 pb-20">
+      {/* Detail Modal */}
+      {selectedQuote && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 animate-fadeIn">
+          <div className="bg-white rounded-3xl p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <h2 className="text-2xl font-black text-slate-800 mb-6">Full Quote Details</h2>
+            <div className="space-y-4 text-slate-600">
+              <p><strong>Name:</strong> {selectedQuote.firstName} {selectedQuote.lastName}</p>
+              <p><strong>Email:</strong> {selectedQuote.email}</p>
+              <p><strong>Phone:</strong> {selectedQuote.phone}</p>
+              <p><strong>DOB:</strong> {selectedQuote.dob}</p>
+              <p><strong>Zip:</strong> {selectedQuote.zipCode}</p>
+              <p><strong>Address:</strong> {selectedQuote.address}, {selectedQuote.unit}</p>
+              <p><strong>City:</strong> {selectedQuote.city}</p>
+              <p><strong>Status:</strong> {selectedQuote.referralStatus}</p>
+              <p><strong>Submitted:</strong> {new Date(selectedQuote.createdAt).toLocaleString()}</p>
+            </div>
+            <button onClick={() => setSelectedQuote(null)} className="mt-8 w-full py-3 bg-slate-800 text-white rounded-xl font-bold">Close</button>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
           <div>
@@ -140,7 +159,6 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                   
-                  {/* Status Dropdown */}
                   <select 
                     value={quote.referralStatus || "Processing"}
                     onChange={(e) => handleStatusChange(quote._id, e.target.value)}
@@ -156,76 +174,10 @@ export default function AdminDashboard() {
                   </select>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="space-y-4">
-                    <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Personal Details</p>
-                    <div className="flex items-center gap-3 text-slate-600">
-                      <Calendar className="text-slate-300" size={18} />
-                      <span className="text-sm font-medium">DOB: {quote.dob}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-slate-600">
-                      <MapPin className="text-slate-300" size={18} />
-                      <span className="text-sm font-medium">Zip: {quote.zipCode}</span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Contact Info</p>
-                    <div className="flex items-center gap-3 text-slate-600">
-                      <Mail className="text-slate-300" size={18} />
-                      <span className="text-sm font-medium">{quote.email}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-slate-600">
-                      <Phone className="text-slate-300" size={18} />
-                      <span className="text-sm font-medium">{quote.phone}</span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Full Address</p>
-                    <div className="text-sm font-medium text-slate-600 leading-relaxed">
-                      {quote.address} {quote.unit && `, Unit ${quote.unit}`}<br />
-                      {quote.city}, {quote.zipCode}
-                    </div>
-                  </div>
-                </div>
-
                 <div className="mt-8 pt-6 border-t border-slate-50 flex items-center justify-between">
                    <div className="text-xs text-slate-400">
                       Account: <span className="font-bold text-slate-600">{quote.userId?.email || "Guest"}</span>
                    </div>
-  const [selectedQuote, setSelectedQuote] = useState(null);
-
-  // ... rest of component ...
-  
-  return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 md:px-8 pt-24 pb-20">
-      {/* Detail Modal */}
-      {selectedQuote && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white rounded-3xl p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-            <h2 className="text-2xl font-black text-slate-800 mb-6">Full Quote Details</h2>
-            <div className="space-y-4 text-slate-600">
-              <p><strong>Name:</strong> {selectedQuote.firstName} {selectedQuote.lastName}</p>
-              <p><strong>Email:</strong> {selectedQuote.email}</p>
-              <p><strong>Phone:</strong> {selectedQuote.phone}</p>
-              <p><strong>DOB:</strong> {selectedQuote.dob}</p>
-              <p><strong>Zip:</strong> {selectedQuote.zipCode}</p>
-              <p><strong>Address:</strong> {selectedQuote.address}, {selectedQuote.unit}</p>
-              <p><strong>City:</strong> {selectedQuote.city}</p>
-              <p><strong>Status:</strong> {selectedQuote.referralStatus}</p>
-              <p><strong>Submitted:</strong> {new Date(selectedQuote.createdAt).toLocaleString()}</p>
-            </div>
-            <button onClick={() => setSelectedQuote(null)} className="mt-8 w-full py-3 bg-slate-800 text-white rounded-xl font-bold">Close</button>
-          </div>
-        </div>
-      )}
-
-      <div className="max-w-7xl mx-auto">
-        {/* ... Header and Search ... */}
-        {/* ... */}
-        
-        {/* Inside filteredQuotes.map: */}
                    <button 
                     onClick={() => setSelectedQuote(quote)}
                     className="text-[#00a98f] font-bold text-sm hover:underline"
@@ -235,12 +187,6 @@ export default function AdminDashboard() {
                 </div>
               </div>
             ))}
-            {quotes.length === 0 && (
-              <div className="bg-white rounded-3xl p-20 text-center border-2 border-dashed border-slate-200">
-                <FileText size={48} className="mx-auto text-slate-200 mb-4" />
-                <p className="text-slate-400 font-bold">No quote leads found yet.</p>
-              </div>
-            )}
           </div>
         ) : (
           <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
@@ -254,7 +200,7 @@ export default function AdminDashboard() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-50">
-                {users.map((u) => (
+                {filteredUsers.map((u) => (
                   <tr key={u._id} className="hover:bg-slate-50/50 transition-colors">
                     <td className="px-8 py-6 font-bold text-slate-800">{u.fullName}</td>
                     <td className="px-8 py-6 text-slate-600">{u.email}</td>
@@ -264,11 +210,6 @@ export default function AdminDashboard() {
                 ))}
               </tbody>
             </table>
-            {users.length === 0 && (
-              <div className="p-20 text-center">
-                <p className="text-slate-400 font-bold">No registered users found.</p>
-              </div>
-            )}
           </div>
         )}
       </div>
