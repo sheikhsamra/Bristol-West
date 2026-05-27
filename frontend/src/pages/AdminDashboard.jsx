@@ -194,7 +194,44 @@ export default function AdminDashboard() {
                    <div className="text-xs text-slate-400">
                       Account: <span className="font-bold text-slate-600">{quote.userId?.email || "Guest"}</span>
                    </div>
-                   <button className="text-[#00a98f] font-bold text-sm hover:underline">View Full Details &rarr;</button>
+  const [selectedQuote, setSelectedQuote] = useState(null);
+
+  // ... rest of component ...
+  
+  return (
+    <div className="min-h-screen bg-slate-50 py-12 px-4 md:px-8 pt-24 pb-20">
+      {/* Detail Modal */}
+      {selectedQuote && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 animate-fadeIn">
+          <div className="bg-white rounded-3xl p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <h2 className="text-2xl font-black text-slate-800 mb-6">Full Quote Details</h2>
+            <div className="space-y-4 text-slate-600">
+              <p><strong>Name:</strong> {selectedQuote.firstName} {selectedQuote.lastName}</p>
+              <p><strong>Email:</strong> {selectedQuote.email}</p>
+              <p><strong>Phone:</strong> {selectedQuote.phone}</p>
+              <p><strong>DOB:</strong> {selectedQuote.dob}</p>
+              <p><strong>Zip:</strong> {selectedQuote.zipCode}</p>
+              <p><strong>Address:</strong> {selectedQuote.address}, {selectedQuote.unit}</p>
+              <p><strong>City:</strong> {selectedQuote.city}</p>
+              <p><strong>Status:</strong> {selectedQuote.referralStatus}</p>
+              <p><strong>Submitted:</strong> {new Date(selectedQuote.createdAt).toLocaleString()}</p>
+            </div>
+            <button onClick={() => setSelectedQuote(null)} className="mt-8 w-full py-3 bg-slate-800 text-white rounded-xl font-bold">Close</button>
+          </div>
+        </div>
+      )}
+
+      <div className="max-w-7xl mx-auto">
+        {/* ... Header and Search ... */}
+        {/* ... */}
+        
+        {/* Inside filteredQuotes.map: */}
+                   <button 
+                    onClick={() => setSelectedQuote(quote)}
+                    className="text-[#00a98f] font-bold text-sm hover:underline"
+                   >
+                     View Full Details &rarr;
+                   </button>
                 </div>
               </div>
             ))}
