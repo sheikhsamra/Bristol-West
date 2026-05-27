@@ -1,9 +1,13 @@
+const express = require('express');
 const connectDB = require('../../lib/db');
 const User = require('../../models/User');
 const bcrypt = require('bcrypt');
 
-module.exports = async (req, res) => {
-    if (req.method !== 'POST') return res.status(405).end();
+const app = express();
+app.use(require('cors')());
+app.use(express.json());
+
+app.post('*', async (req, res) => {
     await connectDB();
     try {
         const { fullName, email, phone, password } = req.body;
@@ -12,4 +16,6 @@ module.exports = async (req, res) => {
         await new User({ fullName, email, phone, password: hashedPassword }).save();
         res.status(201).json({ message: 'User registered successfully' });
     } catch (e) { res.status(500).json({ message: 'Error' }); }
-};
+});
+
+module.exports = app;

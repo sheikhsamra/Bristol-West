@@ -1,7 +1,12 @@
+const express = require('express');
 const connectDB = require('../../lib/db');
 const Quote = require('../../models/Quote');
 
-module.exports = async (req, res) => {
+const app = express();
+app.use(require('cors')());
+app.use(express.json());
+
+app.all('*', async (req, res) => {
     await connectDB();
     if (req.method === 'POST') {
         try {
@@ -16,4 +21,6 @@ module.exports = async (req, res) => {
         const updated = await Quote.findByIdAndUpdate(req.query.id, { referralStatus: req.body.status }, { new: true });
         res.json(updated);
     }
-};
+});
+
+module.exports = app;

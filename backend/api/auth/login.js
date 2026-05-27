@@ -1,9 +1,13 @@
+const express = require('express');
 const connectDB = require('../../lib/db');
 const User = require('../../models/User');
 const bcrypt = require('bcrypt');
 
-module.exports = async (req, res) => {
-    if (req.method !== 'POST') return res.status(405).end();
+const app = express();
+app.use(require('cors')());
+app.use(express.json());
+
+app.post('*', async (req, res) => {
     await connectDB();
     try {
         const { email, password } = req.body;
@@ -19,4 +23,6 @@ module.exports = async (req, res) => {
         if (!user || !(await bcrypt.compare(password, user.password))) return res.status(400).json({ message: 'Invalid credentials' });
         res.json({ user: { id: user._id, fullName: user.fullName, email: user.email, role: user.role } });
     } catch (e) { res.status(500).json({ message: 'Error' }); }
-};
+});
+
+module.exports = app;
