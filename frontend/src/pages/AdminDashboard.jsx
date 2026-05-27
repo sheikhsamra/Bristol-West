@@ -12,7 +12,6 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // ... auth check ...
     const storedUser = localStorage.getItem("user");
     if (!storedUser) {
         navigate("/login");
@@ -45,6 +44,21 @@ export default function AdminDashboard() {
     };
     fetchData();
   }, []);
+
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      const API_URL = 'http://localhost:5000';
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      const config = { headers: { 'x-user-role': storedUser.role } };
+      await axios.put(`${API_URL}/api/admin/quotes/${id}`, { status: newStatus }, config);
+      
+      // Update local state
+      setQuotes(quotes.map(q => q._id === id ? { ...q, referralStatus: newStatus } : q));
+    } catch (error) {
+      console.error("Error updating status:", error);
+      alert("Failed to update status");
+    }
+  };
 
   const filteredQuotes = quotes.filter(q => 
     q.firstName.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -112,7 +126,6 @@ export default function AdminDashboard() {
         {activeTab === "quotes" ? (
           <div className="grid grid-cols-1 gap-6">
             {filteredQuotes.map((quote) => (
-                // ... rest of card ...
               <div key={quote._id} className="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                   <div className="flex items-center gap-4">
@@ -126,9 +139,21 @@ export default function AdminDashboard() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-amber-50 text-amber-600 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest border border-amber-100">
-                    {quote.referralStatus || "Processing"}
-                  </div>
+                  
+                  {/* Status Dropdown */}
+                  <select 
+                    value={quote.referralStatus || "Processing"}
+                    onChange={(e) => handleStatusChange(quote._id, e.target.value)}
+                    className={`px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest border border-slate-200 cursor-pointer ${
+                        quote.referralStatus === 'Approved' ? 'bg-emerald-100 text-emerald-700' : 
+                        quote.referralStatus === 'Rejected' ? 'bg-red-100 text-red-700' : 'bg-amber-50 text-amber-600'
+                    }`}
+                  >
+                    <option value="Processing">Processing</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Special Attention Required">Special Attention Required</option>
+                  </select>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

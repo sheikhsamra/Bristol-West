@@ -105,8 +105,18 @@ app.post('/api/quotes', async (req, res) => {
     }
 });
 
-// Admin Routes
-app.get('/api/admin/users', async (req, res) => {
+// Admin Routes (middleware declaration)
+const isAdmin = async (req, res, next) => {
+    const userRole = req.headers['x-user-role'];
+    if (userRole === 'admin') {
+        next();
+    } else {
+        res.status(403).json({ message: "Forbidden: Admin access only" });
+    }
+};
+
+// Admin Data Routes
+app.get('/api/admin/users', isAdmin, async (req, res) => {
     try {
         const users = await User.find().select('-password').sort({ createdAt: -1 });
         res.json(users);
@@ -115,12 +125,26 @@ app.get('/api/admin/users', async (req, res) => {
     }
 });
 
-app.get('/api/admin/quotes', async (req, res) => {
+app.get('/api/admin/quotes', isAdmin, async (req, res) => {
     try {
         const quotes = await Quote.find().populate('userId', 'fullName email').sort({ createdAt: -1 });
         res.json(quotes);
     } catch (error) {
         res.status(500).json({ message: 'Error' });
+    }
+});
+
+app.put('/api/admin/quotes/:id', isAdmin, async (req, res) => {
+    try {
+        const { status } = req.body;
+        const updatedQuote = await Quote.findByIdAndUpdate(
+            req.params.id,
+            { referralStatus: status },
+            { new: true }
+        );
+        res.json(updatedQuote);
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating status' });
     }
 });
 

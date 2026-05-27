@@ -23,15 +23,24 @@ export default function Register() {
     }
     setLoading(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL;
+      const API_URL = 'https://bristol-west-backend.vercel.app';
+      // Register
       await axios.post(`${API_URL}/api/auth/register`, {
         fullName: formData.fullName,
         email: formData.email,
         phone: formData.phone,
         password: formData.password
       });
-      alert("Registration successful! Please log in.");
-      navigate("/login");
+
+      // Auto-login after successful registration
+      const loginRes = await axios.post(`${API_URL}/api/auth/login`, { 
+        email: formData.email, 
+        password: formData.password 
+      });
+
+      localStorage.setItem('user', JSON.stringify(loginRes.data.user));
+      alert("Registration successful! Welcome.");
+      navigate("/");
     } catch (err) {
       console.error(err);
       alert(err.response?.data?.message || "Error registering user.");
@@ -44,14 +53,14 @@ export default function Register() {
     <div className="flex flex-col min-h-screen bg-slate-50 font-sans">
       <main className="flex-1 flex items-center justify-center px-4 py-10">
         <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">
-          
+
           {/* Left Column: Registration Form */}
           <div className="flex-1 p-8 md:p-12 border-b md:border-b-0 md:border-r border-slate-100">
             <h1 className="text-2xl font-bold text-[#0B2545] mb-2">Create your InsureCareCenter account</h1>
             <p className="text-sm text-slate-500 mb-6">
               Already have an account?{" "}
               <Link to="/login" className="text-[#00a98f] font-medium hover:underline">
-                Log in
+                Log in here
               </Link>
             </p>
 
