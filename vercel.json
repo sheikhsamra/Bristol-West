@@ -6,6 +6,6 @@
     { "source": "/api/quotes", "destination": "/backend/api/quotes/index.js" },
     { "source": "/api/admin/users", "destination": "/backend/api/admin/users.js" },
     { "source": "/api/admin/quotes", "destination": "/backend/api/admin/quotes.js" },
-    { "source": "/(.*)", "destination": "/frontend/dist/$1" }
+    { "source": "/(.*)", "destination": "/frontend/dist/index.html" }
   ]
 }
