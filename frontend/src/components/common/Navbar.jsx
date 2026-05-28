@@ -41,7 +41,7 @@ export default function Navbar() {
         <ul className="hidden lg:flex space-x-6 font-medium text-[#00a98f] items-center">
           <li><Link to="/" className="hover:text-[#ff6a00] transition">Home</Link></li>
           <li><Link to="/why-us" className="hover:text-[#ff6a00] transition">Why InsureCare</Link></li>
-          <li><Link to="/insurance-101" className="hover:text-[#ff6a00] transition">Insurance Basics</Link></li>
+          <li><Link to="/AboutUs" className="hover:text-[#ff6a00] transition">InsureCare About</Link></li>
           <li><Link to="/claims" className="hover:text-[#ff6a00] transition">Claims Center</Link></li>
           
           <div className="h-6 w-px bg-slate-200 mx-2"></div>
@@ -116,18 +116,23 @@ export default function Navbar() {
         <ul className="flex flex-col font-medium text-[#00a98f] px-6 py-6 gap-2">
           <li><Link to="/" onClick={() => setMobileOpen(false)} className="block py-3 hover:text-[#ff6a00] border-b border-slate-50">Home</Link></li>
           <li><Link to="/why-us" onClick={() => setMobileOpen(false)} className="block py-3 hover:text-[#ff6a00] border-b border-slate-50">Why InsureCare</Link></li>
+          <li><Link to="/AboutUs" onClick={() => setMobileOpen(false)} className="block py-3 hover:text-[#ff6a00] border-b border-slate-50">InsureCare About</Link></li>
           <li><Link to="/claims" onClick={() => setMobileOpen(false)} className="block py-3 hover:text-[#ff6a00] border-b border-slate-50">Claims Center</Link></li>
           
           <div className="py-4 space-y-3">
             {user ? (
               <>
-                <div className="flex items-center gap-3 py-2">
-                  <FaUserCircle size={30} />
+                <Link 
+                  to={user.role === 'admin' ? "/admin-dashboard" : "#"} 
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 py-2"
+                >
+                  <FaUserCircle size={30} className="text-[#00a98f]" />
                   <div>
                     <p className="text-slate-900 font-bold leading-none">{user.fullName}</p>
                     <p className="text-slate-400 text-xs mt-1">{user.email}</p>
                   </div>
-                </div>
+                </Link>
                 <button 
                   onClick={handleLogout}
                   className="w-full py-4 bg-slate-100 text-slate-700 font-bold rounded-xl"

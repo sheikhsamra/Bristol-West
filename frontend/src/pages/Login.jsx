@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast';
+import { Eye, EyeOff } from 'lucide-react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -17,13 +20,11 @@ const Login = () => {
       const user = response.data.user;
       localStorage.setItem('user', JSON.stringify(user));
       
-      // If Admin, go straight to dashboard
       if (user.role === 'admin') {
         navigate('/admin-dashboard');
         return;
       }
 
-      // For regular users, check if there was a redirect path
       const redirectPath = localStorage.getItem('redirectAfterLogin');
       if (redirectPath) {
         localStorage.removeItem('redirectAfterLogin');
@@ -33,7 +34,7 @@ const Login = () => {
       }
     } catch (err) {
       console.error(err);
-      alert(err.response?.data?.message || 'Login failed. Please check your credentials.');
+      toast.error(err.response?.data?.message || 'Login failed. Please check your credentials.');
     } finally {
       setLoading(false);
     }
@@ -44,7 +45,6 @@ const Login = () => {
       <main className="flex-1 flex items-center justify-center px-4 py-10">
         <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100">
           
-          {/* Left Column: Input Form */}
           <div className="flex-1 p-8 md:p-12 border-b md:border-b-0 md:border-r border-slate-100">
             <h2 className="text-2xl font-bold text-[#0B2545] mb-2">Log in to InsureCareCenter</h2>
             <p className="text-sm text-slate-500 mb-8">
@@ -66,18 +66,25 @@ const Login = () => {
                 />
               </div>
 
-              <div>
+              <div className="relative">
                 <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
                   Password*
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-[#00a98f] focus:ring-1 focus:ring-[#00a98f] transition text-base"
                   required
                   placeholder="••••••••"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-10 text-slate-400 hover:text-[#00a98f]"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
               </div>
 
               <button
@@ -89,6 +96,7 @@ const Login = () => {
               </button>
             </form>
           </div>
+
 
           {/* Right Column: Quick Actions */}
           <div className="flex-1 p-8 md:p-12 bg-slate-50/50 flex flex-col justify-center">

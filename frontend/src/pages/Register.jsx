@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function Register() {
   const [formData, setFormData] = useState({ 
@@ -11,6 +13,8 @@ export default function Register() {
     confirmPassword: "" 
   });
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,11 +22,11 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match.");
+      toast.error("Passwords do not match.");
       return;
     }
     setLoading(true);
-      try {
+    try {
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       // Register
       await axios.post(`${API_URL}/api/auth/register`, {
@@ -39,16 +43,16 @@ export default function Register() {
       });
 
       localStorage.setItem('user', JSON.stringify(loginRes.data.user));
-      alert("Registration successful! Welcome.");
+      toast.success("Registration successful! Welcome.");
       navigate("/");
     } catch (err) {
       console.error(err);
-      alert(err.response?.data?.message || "Error registering user.");
+      toast.error(err.response?.data?.message || "Error registering user.");
     } finally {
       setLoading(false);
     }
   };
-
+  
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 font-sans">
       <main className="flex-1 flex items-center justify-center px-4 py-10">
@@ -97,21 +101,31 @@ export default function Register() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Password*</label>
-                  <input 
-                    type="password" name="password" placeholder="••••••••" value={formData.password} 
-                    onChange={handleChange} 
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-[#00a98f] focus:ring-1 focus:ring-[#00a98f] transition" 
-                    required
-                  />
+                  <div className="relative">
+                    <input 
+                      type={showPassword ? "text" : "password"} name="password" placeholder="••••••••" value={formData.password} 
+                      onChange={handleChange} 
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-[#00a98f] focus:ring-1 focus:ring-[#00a98f] transition" 
+                      required
+                    />
+                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-3 text-slate-400">
+                      {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                    </button>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Confirm Password*</label>
-                  <input 
-                    type="password" name="confirmPassword" placeholder="••••••••" value={formData.confirmPassword} 
-                    onChange={handleChange} 
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-[#00a98f] focus:ring-1 focus:ring-[#00a98f] transition" 
-                    required
-                  />
+                  <div className="relative">
+                    <input 
+                      type={showConfirmPassword ? "text" : "password"} name="confirmPassword" placeholder="••••••••" value={formData.confirmPassword} 
+                      onChange={handleChange} 
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-[#00a98f] focus:ring-1 focus:ring-[#00a98f] transition" 
+                      required
+                    />
+                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-3 text-slate-400">
+                      {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                    </button>
+                  </div>
                 </div>
               </div>
 
