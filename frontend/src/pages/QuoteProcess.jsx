@@ -187,13 +187,13 @@ export default function QuoteProcess() {
             <button 
               onClick={() => {
                 if (!formData.firstName || !formData.lastName || !formData.dob) {
-                  alert("Please provide your name and date of birth to continue.");
+                  toast.error("Please provide your name and date of birth to continue.");
                   return;
                 }
                 setHasConsented(true);
                 setStep(1); 
               }}
-              className="w-full bg-[#ff5100] text-white py-5 rounded-2xl font-bold text-xl hover:bg-[#ef5630] transition-all shadow-xl shadow-orange-100"
+              className="w-full bg-[#ff5100] text-white py-4 md:py-5 rounded-2xl font-bold text-sm md:text-xl hover:bg-[#ef5630] transition-all shadow-xl shadow-orange-100"
             >
               I Agree & Continue
             </button>
@@ -271,9 +271,9 @@ export default function QuoteProcess() {
                 <button 
                   onClick={nextStep} 
                   disabled={loading}
-                  className="bg-[#ff5100] text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-[#ef5630] transition-all flex items-center gap-2 shadow-lg shadow-orange-200 disabled:opacity-50"
+                  className="w-full md:w-auto bg-[#ff5100] text-white px-6 md:px-10 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-[#ef5630] transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-200 disabled:opacity-50"
                 >
-                  {loading ? "Processing..." : "Calculate My Rate"} <ArrowRight size={20} />
+                  {loading ? "Processing..." : "Calculate My Rate"} <ArrowRight size={18} />
                 </button>
               </div>
             </div>
@@ -281,45 +281,45 @@ export default function QuoteProcess() {
 
           {/* Step 3: Special Attention (Final Page) */}
           {step === 3 && (
-            <div className="p-10 md:p-20 text-center animate-fadeIn">
-              <div className="max-w-xl mx-auto">
-                <div className="flex justify-center mb-8">
+            <div className="p-6 md:p-16 text-center animate-fadeIn">
+              <div className="max-w-md mx-auto">
+                <div className="flex justify-center mb-6">
                   <div className="relative">
                     <div className="absolute inset-0 bg-amber-200 blur-2xl opacity-30 rounded-full"></div>
-                    <div className="relative w-24 h-24 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center border-4 border-white shadow-xl">
-                      <Circle size={44} strokeWidth={2.5} />
+                    <div className="relative w-20 h-20 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center border-4 border-white shadow-xl">
+                      <Circle size={36} strokeWidth={2.5} />
                     </div>
                   </div>
                 </div>
 
-                <h2 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 tracking-tight">
                   Your quote requires special attention
                 </h2>
                 
-                <p className="text-slate-500 text-lg mb-10 leading-relaxed">
+                <p className="text-slate-500 text-base md:text-lg mb-8 leading-relaxed">
                   We are unable to complete your quote online at this time. Please contact our support team to finalize your personalized rate.
                 </p>
 
-                <div className="bg-slate-50 rounded-3xl p-8 mb-8 border border-slate-100 shadow-inner">
+                <div className="bg-slate-50 rounded-3xl p-6 md:p-8 mb-8 border border-slate-100 shadow-inner">
                   <div className="mb-6">
                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] block mb-2">Quote Reference</span>
-                    <span className="text-3xl font-mono font-bold text-slate-800 tracking-wider">1683356712</span>
+                    <span className="text-2xl md:text-3xl font-mono font-bold text-slate-800 tracking-wider">1683356712</span>
                   </div>
                   
                   <div className="h-px bg-slate-200 w-16 mx-auto mb-6"></div>
                   
                   <div>
-                    <span className="text-sm font-medium text-slate-500 block mb-4">Call customer service at</span>
+                    <span className="text-sm font-medium text-slate-500 block mb-3">Call customer service at</span>
                     <a 
                       href="tel:6507312098" 
-                      className="inline-flex items-center gap-3 bg-[#00a98f] text-white px-8 py-4 rounded-2xl font-bold text-xl hover:bg-[#008f7a] transition-all shadow-lg hover:shadow-emerald-200"
+                      className="inline-flex items-center gap-3 bg-[#00a98f] text-white px-6 py-3 md:px-8 md:py-4 rounded-2xl font-bold text-lg md:text-xl hover:bg-[#008f7a] transition-all shadow-lg hover:shadow-emerald-200"
                     >
                       (650) 731-2098
                     </a>
                   </div>
                 </div>
 
-                <div className="flex flex-col items-center gap-6">
+                <div className="flex flex-col items-center gap-4">
                   <p className="text-sm text-slate-400 font-medium italic">
                     Need more help? Our experts are standing by.
                   </p>
